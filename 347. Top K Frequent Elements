@@ -1,0 +1,15 @@
+class Solution:
+    def topKFrequent(self, nums: List[int], k: int) -> List[int]:
+        from collections import  defaultdict
+        store  = defaultdict(int)
+        for r in nums:
+            store[r] += 1
+        store = sorted(store.items() , key = lambda o : o[1] , reverse = True )
+        #print(store)
+        ans = []
+        for l , v in store:
+            if k < 1:
+                return ans
+            ans.append(l)
+            k -=1
+        return ans
