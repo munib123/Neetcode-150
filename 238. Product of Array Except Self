@@ -1,0 +1,17 @@
+class Solution:
+    def productExceptSelf(self, nums: List[int]) -> List[int]:
+        from functools import reduce
+        mul = reduce(lambda a,b : a*b if (a != 0 and b != 0) else (a if b == 0 else b)   , nums)
+        ans = []
+        if nums.count(0) >= 2:
+            return [0]*(len(nums))
+        elif nums.count(0) == 1 :
+            for r in nums:
+                if  r == 0:
+                    ans.append(mul)
+                else:
+                    ans.append(0)
+        else:
+            for r  in nums:
+                ans.append( mul // r )
+        return ans
